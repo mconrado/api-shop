@@ -5,10 +5,18 @@ use app\models\User;
 
 class UserTest extends \Codeception\Test\Unit
 {
+    protected $user;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->user = new User();
+        $this->user->username = 'josecouves';
+        $this->user->password_hash = '123456';
+    }
     public function testModelExists()
     {
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf(User::class, $this->user);
     }
 
     public function testUnsucessfulSave()
@@ -19,19 +27,12 @@ class UserTest extends \Codeception\Test\Unit
 
     public function testSucessfulSave()
     {
-        $user = new User();
-        $user->username = 'josecouves';
-        $user->password_hash = '123456';
-        $this->assertTrue($user->save(), print_r($user->getErrors(), true));
+        $this->assertTrue($this->user->save(), print_r($this->user->getErrors(), true));
     }
 
     public function testPasswordIsEncrypted()
     {
-        $user = new User();
-        $user->username = 'josecouves';
-        $user->password_hash = '123456';
-        $user->save();
-
+        $this->user->save();
         $savedUser = User::findOne(['username' => 'josecouves']);
 
         $this->assertFalse($savedUser->password_hash === '123456');
@@ -39,10 +40,7 @@ class UserTest extends \Codeception\Test\Unit
 
     public function testUserAlreadyExists()
     {
-        $user = new User();
-        $user->username = 'josecouves';
-        $user->password_hash = '123456';
-        $user->save();
+        $this->user->save();
 
         $user2 = new User();
         $user2->username = 'josecouves';

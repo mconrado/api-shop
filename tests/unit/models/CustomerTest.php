@@ -12,8 +12,7 @@ class CustomerTest extends \Codeception\Test\Unit
         parent::setUp();
         $this->customer = new Customer();
         $this->customer->name = 'Jose das Couves';
-
-
+        $this->customer->cpf = '52681177006';
     }
     public function testModelExists()
     {
@@ -28,18 +27,17 @@ class CustomerTest extends \Codeception\Test\Unit
 
     public function testCPFValid()
     {
-        $this->customer->cpf = '52681177006';
         $this->assertTrue($this->customer->validate(['cpf']));
     }
 
     public function testUnsucessfulSave()
     {
+        $this->customer->cpf = '';
         $this->assertFalse($this->customer->save());
     }
 
     public function testSuccessfulSave()
     {
-        $this->customer->cpf = '52681177006';
         $this->assertTrue($this->customer->save(), print_r($this->customer->getErrors(), true));
     }
 }
