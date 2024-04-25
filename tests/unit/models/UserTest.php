@@ -1,44 +1,53 @@
 <?php
-
 namespace tests\unit\models;
 
 use app\models\User;
 
 class UserTest extends \Codeception\Test\Unit
 {
-    public function testFindUserById()
+    public function testModelExists()
     {
-        expect_that($user = User::findIdentity(100));
-        expect($user->username)->equals('admin');
-
-        expect_not(User::findIdentity(999));
+        $user = new User();
+        $this->assertInstanceOf(User::class, $user);
     }
 
-    public function testFindUserByAccessToken()
+    public function testUnsucessfulSave()
     {
-        expect_that($user = User::findIdentityByAccessToken('100-token'));
-        expect($user->username)->equals('admin');
-
-        expect_not(User::findIdentityByAccessToken('non-existing'));        
+        $user = new User();
+        $this->assertFalse($user->save());
     }
 
-    public function testFindUserByUsername()
+    public function testSucessfulSave()
     {
-        expect_that($user = User::findByUsername('admin'));
-        expect_not(User::findByUsername('not-admin'));
+        $user = new User();
+        $user->username = 'josecouves';
+        $user->password_hash = '123456';
+        $this->assertTrue($user->save(), print_r($user->getErrors(), true));
     }
 
-    /**
-     * @depends testFindUserByUsername
-     */
-    public function testValidateUser($user)
+    public function testPasswordIsEncrypted()
     {
-        $user = User::findByUsername('admin');
-        expect_that($user->validateAuthKey('test100key'));
-        expect_not($user->validateAuthKey('test102key'));
+        $user = new User();
+        $user->username = 'josecouves';
+        $user->password_hash = '123456';
+        $user->save();
 
-        expect_that($user->validatePassword('admin'));
-        expect_not($user->validatePassword('123456'));        
+        $savedUser = User::findOne(['username' => 'josecouves']);
+
+        $this->assertFalse($savedUser->password_hash === '123456');
     }
 
+    public function testUserAlreadyExists()
+    {
+        $user = new User();
+        $user->username = 'josecouves';
+        $user->password_hash = '123456';
+        $user->save();
+
+        $user2 = new User();
+        $user2->username = 'josecouves';
+        $user2->password_hash = '456789';
+
+        $this->assertFalse($user2->save());
+    }
 }

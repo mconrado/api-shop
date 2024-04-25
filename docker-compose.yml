@@ -1,6 +1,9 @@
 version: '2'
 services:
   api:
+    build:
+        context: .
+        dockerfile: Dockerfile
     image: yiisoftware/yii2-php:7.1-apache
     container_name: yii2-apishop
     volumes:

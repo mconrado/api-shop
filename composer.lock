@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "20d3b9227327eb4f2bed16c288673135",
+    "content-hash": "26c7107b4d137a81449dc7037b930f10",
     "packages": [
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -993,6 +993,62 @@
                 }
             ],
             "time": "2021-12-12T22:59:22+00:00"
+        },
+        {
+            "name": "yiibr/yii2-br-validator",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiibr/yii2-br-validator.git",
+                "reference": "6667d81ede1e77a92f3f7ac44b598082db7a180a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiibr/yii2-br-validator/zipball/6667d81ede1e77a92f3f7ac44b598082db7a180a",
+                "reference": "6667d81ede1e77a92f3f7ac44b598082db7a180a",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.13"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yiibr\\brvalidator\\": "src",
+                    "yiibr\\brvalidator\\tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Leandro Guindani Gehlen",
+                    "email": "leandrogehlen@gmail.com"
+                }
+            ],
+            "description": "Provide validations and features for brazilian localization",
+            "keywords": [
+                "br",
+                "brasil",
+                "brazil",
+                "cei",
+                "cnpj",
+                "cpf",
+                "model",
+                "validator",
+                "yii"
+            ],
+            "time": "2020-06-19T12:11:57+00:00"
         },
         {
             "name": "yiisoft/yii2",
