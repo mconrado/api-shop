@@ -15,12 +15,12 @@ class m240424_180421_create_customer_table extends Migration
             'cpf' => $this->string()->notNull(),
             'zipcode' => $this->string(),
             'address_street' => $this->string(),
-            'number' => $this->integer(),
+            'number' => $this->integer(10),
             'city' => $this->string(),
             'state' => $this->string(),
             'complement' => $this->string(),
             'photo' => $this->string(),
-            'gender' => $this->string(),
+            'gender' => $this->string(1),
         ]);
     }
 

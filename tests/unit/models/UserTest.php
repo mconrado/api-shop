@@ -11,6 +11,7 @@ class UserTest extends \Codeception\Test\Unit
     {
         parent::setUp();
         $this->user = new User();
+        $this->user->name = 'José das Couves';
         $this->user->username = 'josecouves';
         $this->user->password_hash = '123456';
     }

@@ -6,9 +6,6 @@ use yiibr\brvalidator\CpfValidator;
 
 class Customer extends ActiveRecord
 {
-    const GENDER_MALE = 'M';
-    const GENDER_FEMALE = 'F';
-
     public static function tableName()
     {
         return 'customer';

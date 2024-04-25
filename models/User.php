@@ -17,8 +17,9 @@ class User extends ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password_hash'], 'required'],
+            [['username', 'password_hash', 'name'], 'required'],
             ['username', 'unique'],
+
         ];
     }
 
