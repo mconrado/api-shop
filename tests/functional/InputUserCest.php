@@ -4,7 +4,8 @@ use app\models\User;
 
 class InputUserCest
 {
-    public function _fixtures() {
+    public function _fixtures()
+    {
         return [
             'persons'   => 'app\tests\fixtures\UserFixture',
         ];

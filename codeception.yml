@@ -10,6 +10,7 @@ settings:
     colors: true
 modules:
     enabled:
+        - Cli
         - REST:
               depends: PhpBrowser
               url: 'http://localhost'
