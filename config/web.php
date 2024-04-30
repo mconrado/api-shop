@@ -48,14 +48,16 @@ $config = [
             'class' => 'yiithings\dotenv\Loader',
             'path' => '@app/.env',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'api/auth/login' => 'auth/login',
             ],
         ],
-        */
+    ],
+    'controllerMap' =>[
+        'auth' => 'app\controllers\AuthController',
     ],
     'params' => $params,
 ];

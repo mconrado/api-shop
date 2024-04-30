@@ -49,4 +49,12 @@ class UserTest extends \Codeception\Test\Unit
 
         $this->assertFalse($user2->save());
     }
+
+    public function testFindUserByUsername()
+    {
+        $this->user->save();
+
+        $userSaved = User::findByUsername('josecouves');
+        $this->assertNotNull($userSaved);
+    }
 }

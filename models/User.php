@@ -7,8 +7,6 @@ use yii\db\ActiveRecord;
 
 class User extends ActiveRecord
 {
-    public $password;
-
     public static function tableName()
     {
         return 'user';
@@ -19,6 +17,7 @@ class User extends ActiveRecord
         return [
             [['username', 'password_hash', 'name'], 'required'],
             ['username', 'unique'],
+            ['password_hash', 'string'],
 
         ];
     }
@@ -33,9 +32,13 @@ class User extends ActiveRecord
         }
         return false;
     }
-
     public function validatePassword($password)
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
+    public static function findByUsername($username)
+    {
+        return static::findOne(['username' => $username]);
+    }
+
 }
