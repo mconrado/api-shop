@@ -33,7 +33,6 @@ class InputUserCest
 
     public function testUserFound(\FunctionalTester $I)
     {
-
         $savedUser = User::findOne(['username' => 'josecouves']);
 
         $I->sendPOST('api/auth/login', [
@@ -41,7 +40,10 @@ class InputUserCest
             'password' => '123456'
         ]);
 
-        $I->seeResponseMatchesJsonType(['token' => 'string:!empty']);
+        $I->seeHttpHeader('Authorization');
+        $token = $I->grabHttpHeader('Authorization');
+        \PHPUnit_Framework_Assert::assertNotEmpty($token);
+        $I->seeResponseMatchesJsonType(['success' => 'string:!empty']);
     }
 
 }
