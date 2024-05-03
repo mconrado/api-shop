@@ -9,6 +9,14 @@ use yii\web\BadRequestHttpException;
 
 class ProductController extends Controller
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+        ];
+        return $behaviors;
+    }
     public function actionSave()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
