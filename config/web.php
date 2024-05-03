@@ -53,11 +53,18 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'api/auth/login' => 'auth/login',
+                'api/product/save' => 'product/save',
+                'api/product' => 'product/get',
+                'api/product/<page:\d+>' => 'product/get',
             ],
+        ],
+        'authenticator' => [
+            'class' => 'yii\filters\auth\HttpBearerAuth',
         ],
     ],
     'controllerMap' =>[
         'auth' => 'app\controllers\AuthController',
+        'product' => 'app\controllers\ProductController',
     ],
     'params' => $params,
 ];
