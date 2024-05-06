@@ -16,6 +16,8 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => env('COOKIE_VALIDATION_KEY'),
+            'enableCsrfValidation' => false,
+
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -56,6 +58,7 @@ $config = [
                 'api/product/save' => 'product/save',
                 'api/product' => 'product/get',
                 'api/product/<page:\d+>' => 'product/get',
+                'api/customer/save' => 'customer/save',
             ],
         ],
         'authenticator' => [
@@ -65,6 +68,7 @@ $config = [
     'controllerMap' =>[
         'auth' => 'app\controllers\AuthController',
         'product' => 'app\controllers\ProductController',
+        'customer' => 'app\controllers\CustomerController',
     ],
     'params' => $params,
 ];

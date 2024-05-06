@@ -1,6 +1,6 @@
 <?php
 
-class LoginCommandCest
+class CreateUserCmdCest
 {
    public function _fixtures()
    {
