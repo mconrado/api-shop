@@ -60,9 +60,11 @@ $config = [
                 'api/product' => 'product',
                 'api/product/<page:\d+>' => 'product',
 
+
                 'api/customer/save' => 'customer/save',
                 'api/customer' => 'customer',
                 'api/customer/<page:\d+>' => 'customer',
+                'api/customer/<customerId:\d+>/products' => 'product/customer-products',
 
             ],
         ],

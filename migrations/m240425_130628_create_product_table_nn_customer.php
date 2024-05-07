@@ -20,28 +20,19 @@ class m240425_130628_create_product_table_nn_customer extends Migration
         ]);
 
         $this->createTable('{{%customer_product}}', [
-            'customer_id' => $this->integer(),
-            'product_id' => $this->integer(),
-            'PRIMARY KEY(customer_id, product_id)',
+            'id' => $this->primaryKey(),
+            'customer_id' => $this->integer()->notNull(),
+            'product_id' => $this->integer()->notNull(),
         ]);
 
-        $this->addForeignKey(
-            'fk-customer_product-customer_id',
+        $this->createIndex(
+            'idx-customer_product-customer_id-product_id',
             'customer_product',
-            'customer_id',
-            'customer',
-            'id',
-            'CASCADE'
+            ['customer_id', 'product_id'], false
         );
 
-        $this->addForeignKey(
-            'fk-customer_product-product_id',
-            'customer_product',
-            'product_id',
-            'product',
-            'id',
-            'CASCADE'
-        );
+
+
     }
 
     /**
@@ -49,6 +40,7 @@ class m240425_130628_create_product_table_nn_customer extends Migration
      */
     public function safeDown()
     {
+        $this->dropIndex('idx-customer_product-customer_id-product_id', 'customer_product');
         $this->dropTable('{{%customer_product}}');
         $this->dropTable('{{%product}}');
     }

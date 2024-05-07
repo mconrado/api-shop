@@ -39,4 +39,10 @@ class Customer extends ActiveRecord
             'gender' => 'Gender',
         ];
     }
+
+    public function getProducts()
+    {
+        return $this->hasMany(Product::className(), ['id' => 'product_id'])
+            ->viaTable('customer_product', ['customer_id' => 'id']);
+    }
 }

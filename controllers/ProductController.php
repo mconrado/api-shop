@@ -5,7 +5,9 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\rest\Controller;
 use app\models\Product;
+use app\models\Customer;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 
 class ProductController extends Controller
 {
@@ -53,6 +55,22 @@ class ProductController extends Controller
             throw new BadRequestHttpException($errorMessage, 400);
         }
     }
+
+    public function actionCustomerProducts($customerId)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $customer = Customer::findOne($customerId);
+
+        if ($customer === null) {
+            throw new NotFoundHttpException('Cliente não encontrado.');
+        }
+
+        $products = $customer->getProducts()->all();
+
+        return $products;
+    }
+
 
 
 }
