@@ -13,7 +13,6 @@ class GetProductCest
     public function _fixtures()
     {
         return [
-            'products'   => 'app\tests\fixtures\ProductFixture',
             'users' => 'app\tests\fixtures\UserFixture',
             'customer_products' => 'app\tests\fixtures\CustomerProductsFixture',
         ];

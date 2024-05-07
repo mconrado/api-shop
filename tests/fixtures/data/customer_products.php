@@ -3,7 +3,7 @@ $faker = Faker\Factory::create();
 
 $customerProductMock = [];
 
-for ($customerId = 1; $customerId <= 5; $customerId++) {
+for ($customerId = 1; $customerId <= 3; $customerId++) {
     $productsAdded = 0;
 
     while ($productsAdded < 10) {
