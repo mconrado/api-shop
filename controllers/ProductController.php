@@ -17,6 +17,24 @@ class ProductController extends Controller
         ];
         return $behaviors;
     }
+
+    public function actionIndex($page = 1)
+    {
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $query = Product::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+                'page' => $page - 1,
+            ],
+        ]);
+
+        return $dataProvider;
+    }
+
     public function actionSave()
     {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -36,20 +54,5 @@ class ProductController extends Controller
         }
     }
 
-    public function actionGet($page = 1)
-    {
-        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-        $query = Product::find();
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-            'pagination' => [
-                'pageSize' => 10,
-                'page' => $page - 1,
-            ],
-        ]);
-
-        return $dataProvider;
-    }
 }

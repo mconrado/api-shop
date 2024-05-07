@@ -55,9 +55,11 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'api/auth/login' => 'auth/login',
+
                 'api/product/save' => 'product/save',
-                'api/product' => 'product/get',
-                'api/product/<page:\d+>' => 'product/get',
+                'api/product' => 'product',
+                'api/product/<page:\d+>' => 'product',
+
                 'api/customer/save' => 'customer/save',
                 'api/customer' => 'customer',
                 'api/customer/<page:\d+>' => 'customer',
