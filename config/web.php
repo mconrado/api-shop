@@ -59,6 +59,9 @@ $config = [
                 'api/product' => 'product/get',
                 'api/product/<page:\d+>' => 'product/get',
                 'api/customer/save' => 'customer/save',
+                'api/customer' => 'customer',
+                'api/customer/<page:\d+>' => 'customer',
+
             ],
         ],
         'authenticator' => [

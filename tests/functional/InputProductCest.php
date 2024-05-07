@@ -28,7 +28,13 @@ class InputProductCest
 
     public function testInputInvalidPrice(FunctionalTester $I)
     {
-        $response = TestAuthHelper::sendRequest($I, $this->url, $this->modeRequest, ['name' => 'Chave de Fenda', 'price' => 'abc']);
+        $response = TestAuthHelper::sendRequest(
+            $I,
+            $this->url,
+            $this->modeRequest,
+            ['name' => 'Chave de Fenda', 'price' => 'abc']
+        );
+
         $I->seeResponseContains('Erro ao cadastrar o produto', $response['message']);
     }
 
