@@ -2,8 +2,7 @@
 
 MYSQL_ROOT_PASSWORD: senha-usuario-root
 MYSQL_DATABASE: nome-do-banco-de-dados
-MYSQL_USER: nome-usuario-avancado
-MYSQL_PASSWORD: senha-do-usuario-avancado
+
 
 
 # configs Yii2
@@ -14,5 +13,5 @@ COOKIE_VALIDATION_KEY="utilize-uma-hash-aqui"
 # Banco de dados
 DB_HOST="db" #mantenha este nome
 DB_NAME="nome-do-banco-de-dados-setado-no-docker"
-DB_USER="root-ou-usuario-avancado-setado-no-docker"
-DB_PASS="respectiva-senha"
+DB_USER="root" #mantenha este user
+DB_PASS="respectiva-senha-usuario-root"
