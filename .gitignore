@@ -1,6 +1,9 @@
 # diretorio de testes
 nao-commitar/
 
+#init-sql para docker
+init.sql
+
 # env file
 .env
 

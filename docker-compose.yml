@@ -10,21 +10,27 @@ services:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
     ports:
-      - '8000:80'      
-
+      - '8000:80'
+    depends_on:
+      - db
+    networks:
+      - apishopnet
     
   db:
+    build:
+      context: .
+      dockerfile: DockerfileMySQL
     image: mysql:8
     ports:
       - "3306:3306"
     restart: always
-    volumes:
-        - ./custom.cnf:/etc/mysql/conf.d/custom.cnf
-    command: --default-authentication-plugin=mysql_native_password
+    command: ["mysqld", "--mysql-native-password=ON"]
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - apishopnet
 
+networks:
+  apishopnet:
 
