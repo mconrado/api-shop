@@ -37,21 +37,11 @@ docker exec -it yii2-apishop yii create-user "<username>" "<name>" "<password>"
 | AÇÃO                                   |             URL          |
 |----------------------------------------|---------------------------|
 | **LOGIN**                              | [api/auth/login](http://localhost:8000/api/auth/login)
-|
 | **CADASTRO DE CLIENTES**               | [api/customer/save](http://localhost:8000/api/customer/save)
-|
-|
 | **CONSULTA DE CLIENTES**               | [api/customer](http://localhost:8000/api/customer)
-|
-|
 | **CADASTRO DE PRODUTOS**               | [api/product/save](http://localhost:8000/api/product/save)
-|
-|
 | **CONSULTA DE PRODUTOS**               | [api/product](http://localhost:8000/api/product)
-|
-|
 | **CONSULTA DE PRODUTOS DE UM CLIENTE** | [api/customer/1/products](api/customer/1/products)
-|
 
 ##### **Ou importe o arquivo postman.json no Postman.*
 
