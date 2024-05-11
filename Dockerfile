@@ -5,7 +5,6 @@ WORKDIR /app
 COPY . /app
 
 RUN composer self-update --1
-RUN composer install
 
 COPY wait-for-mysql.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/wait-for-mysql.sh
